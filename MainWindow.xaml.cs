@@ -1,6 +1,8 @@
 using System.IO;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using TodoApp.Models;
 using TodoApp.ViewModels;
 
 namespace TodoApp;
@@ -55,6 +57,15 @@ public partial class MainWindow : Window
         catch
         {
             // Fallback to default icon
+        }
+    }
+
+    private void TodoRow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        if (e.ClickCount == 2 && sender is FrameworkElement fe && fe.DataContext is TodoItem item)
+        {
+            item.IsCompleted = !item.IsCompleted;
+            e.Handled = true;
         }
     }
 }

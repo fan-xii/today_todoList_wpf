@@ -51,7 +51,7 @@
                                   StrokeStartLineCap="Round" StrokeEndLineCap="Round"
                                   StrokeLineJoin="Round"
                                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                                  Width="22" Height="22" Stretch="Uniform" Opacity="0"/>
+                                  Width="12" Height="12" Stretch="Uniform" Opacity="0"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
@@ -126,9 +126,11 @@
         <!-- DELETE BUTTON -->
         <Style x:Key="DeleteBtn" TargetType="Button">
             <Setter Property="Foreground" Value="{StaticResource WarmGrayBrush}"/>
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontSize" Value="22"/>
             <Setter Property="FontWeight" Value="Light"/>
-            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="MinWidth" Value="32"/>
+            <Setter Property="MinHeight" Value="32"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Cursor" Value="Hand"/>
@@ -137,8 +139,8 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border x:Name="border" Background="{TemplateBinding Background}"
-                                CornerRadius="3" Padding="{TemplateBinding Padding}">
-                            <TextBlock Text="&#xD7;" FontSize="18" FontWeight="Light"
+                                CornerRadius="4" Padding="{TemplateBinding Padding}">
+                            <TextBlock Text="&#xD7;" FontSize="22" FontWeight="Light"
                                        Foreground="{TemplateBinding Foreground}"
                                        VerticalAlignment="Center"/>
                         </Border>
@@ -358,7 +360,8 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border Margin="0,0,0,2" Padding="8,10,8,10"
-                                        Background="Transparent" CornerRadius="4">
+                                        Background="Transparent" CornerRadius="4"
+                                        MouseLeftButtonDown="TodoRow_MouseLeftButtonDown">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
