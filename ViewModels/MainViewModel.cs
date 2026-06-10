@@ -165,6 +165,9 @@ public class RelayCommand : ICommand
         _canExecute = canExecute;
     }
 
+    // 将 CanExecuteChanged 挂载到 WPF 的 CommandManager.RequerySuggested，
+    // 这样当输入框文本变化等 UI 事件发生时，系统会自动重新查询所有命令的 CanExecute 状态，
+    // 无需手动调用 RaiseCanExecuteChanged()
     public event EventHandler? CanExecuteChanged
     {
         add => CommandManager.RequerySuggested += value;
@@ -181,6 +184,9 @@ public class RelayCommand<T> : ICommand
 
     public RelayCommand(Action<T?> execute) => _execute = execute;
 
+    // 将 CanExecuteChanged 挂载到 WPF 的 CommandManager.RequerySuggested，
+    // 这样当输入框文本变化等 UI 事件发生时，系统会自动重新查询所有命令的 CanExecute 状态，
+    // 无需手动调用 RaiseCanExecuteChanged()
     public event EventHandler? CanExecuteChanged
     {
         add => CommandManager.RequerySuggested += value;
